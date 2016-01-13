@@ -1,6 +1,5 @@
 # Xcode
 #
-
 build/
 *.pbxuser
 !default.pbxuser
@@ -13,6 +12,7 @@ build/
 xcuserdata
 *.xccheckout
 *.moved-aside
+<<<<<<< HEAD
 *.xcodeproj/xcsuserdata/
 *.xcworkspacedata
 DerivedData
