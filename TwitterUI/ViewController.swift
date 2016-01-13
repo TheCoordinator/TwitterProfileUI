@@ -80,10 +80,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         var headerTransform = CATransform3DIdentity
         
-        if offset >= 0 {
+        let setTransform = { () -> Void in
             headerTransform = CATransform3DTranslate(headerTransform, 0, max(-self.offsetHeaderStop, -offset), 0)
-                
-              // ------------ Label
+        }
+        if offset >= 0 {
+            setTransform()
+            // ------------ Label
             
             let labelTransform = CATransform3DMakeTranslation(0, max(-self.distanceWLabelHeader, self.offsetBLabelHeader - offset), 0)
             self.navTitleLabel.layer.transform = labelTransform
@@ -91,6 +93,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             //  ------------ Blur
             
             self.visualEffectView.alpha = min (1.0, (offset - self.offsetBLabelHeader) / self.distanceWLabelHeader)
+        } else if offset > -self.screenWidth {
+            setTransform()
         }
         
         headerView.layer.transform = headerTransform
